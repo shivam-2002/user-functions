@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Of Users</title>
+    <style>
+        .table{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* gap:10px; */
+            width: 100%;
+            border: 1px solid black;
+        }
+
+        .row{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <h1>List Of Users</h1>
+    <table class="table">
+        <tr class="row">
+            <td>Name</td>
+            <td>Email</td>
+        </tr>
+
+        {% for user in user_list %}
+        <tr class="row">
+            <td>{{user[1]}}</td>
+            <td>{{user[2]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="http://localhost:8000/register">Add new user.</a>
+    </div>
+
+</body>
+</html>
