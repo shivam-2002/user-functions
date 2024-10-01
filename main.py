@@ -13,6 +13,8 @@ MYSQL_CONFIG = {
     "database": "fast",
 }
 
+
+
 def create_users_table(cursor):
     try:
         # SQL query to create a users table
