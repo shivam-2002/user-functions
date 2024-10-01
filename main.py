@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 import mysql.connector
 
 # Replace with your MySQL connection details
-MYSQL_CONFIG = {
+config = {
     "host": "localhost",
     "port":3306,
     "user": "root",
@@ -47,7 +47,7 @@ def insert_user(cursor, name, email, username, password):
 
 # Establish a connection to the MySQL database
 try:
-    conn = mysql.connector.connect(**MYSQL_CONFIG)
+    conn = mysql.connector.connect(**config)
     cursor = conn.cursor()
 
     # Create users table
@@ -70,7 +70,7 @@ finally:
 def get_all_items_from_table():
     try:
         # Establish a connection to the MySQL database
-        conn = mysql.connector.connect(**MYSQL_CONFIG)
+        conn = mysql.connector.connect(**config)
         cursor = conn.cursor()
 
         # Execute a SELECT query to retrieve all items from the table
@@ -128,7 +128,7 @@ async def register_page(request: Request):
 @app.post('/register-post')
 async def register(request: Request, username: str = Form(...), name: str = Form(...), password: str = Form(...), email: str = Form(...)):
 
-    conn = mysql.connector.connect(**MYSQL_CONFIG)
+    conn = mysql.connector.connect(**config)
     cursor = conn.cursor()
 
     insert_user(cursor, name, email, username, password)
